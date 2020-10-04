@@ -1,0 +1,17 @@
+{% extends 'topLinks/base.html' %}
+
+{% block content %}
+        
+    <div class="masthead">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center" style="margin-bottom: 40px;">   
+                    <h1 class="display-4" style="padding-bottom:10px;color:floralwhite;">Twitter Top Links</h1>  
+                    <a class="btn btn-outline-light btn-lg mr-1" href = "{% url 'topLinks:oauth' %}" role = "button"> Sign in with twitter </a> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

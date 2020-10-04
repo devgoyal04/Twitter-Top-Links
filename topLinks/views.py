@@ -8,8 +8,8 @@ CONSUMER_KEY = '6Uff1eSm3Filj2q26cFVSehfM'
 CONSUMER_SECRET = '2khEE2qd6pMtdJen5obJgEuQzpb9hgFQM1qNaAAfjWcdjLljuu'
 CALLBACK_URL = 'http://127.0.0.1:8000/callback'
 
-def homeView(request):
-    return render(request, 'home.html', {})
+def indexView(request):
+    return render(request, 'topLinks/index.html', {})
 
 def oauth(request):
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET, CALLBACK_URL)
@@ -31,4 +31,7 @@ def callback(request):
     except tweepy.TweepError:
         print('Error! Failed to get access token.')
 
-    return HttpResponseRedirect(reverse('twitterAuth:home'))
+    return HttpResponseRedirect(reverse('topLinks:home'))
+
+def homeView(request):
+    return render(request, 'topLinks/home.html', {})
