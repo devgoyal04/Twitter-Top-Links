@@ -1,7 +1,14 @@
 {% extends 'topLinks/base.html' %}
 
+
 {% block content %}
 
-    you are logged in!
+    <a href = "{% url 'topLinks:logout' %}" role = "button"> Logout </a>
+
+    {% for tweet in tweets %}
+        <div class = "container" style = "text-align: -webkit-center;"> 
+            {{ tweet | safe }} 
+        </div>
+    {% endfor %}
 
 {% endblock content %}
