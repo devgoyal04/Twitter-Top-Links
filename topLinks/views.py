@@ -12,7 +12,7 @@ import tldextract
 
 from .models import Author, Tweets
 
-from config import CONSUMER_KEY, CONSUMER_SECRET
+from .config import CONSUMER_KEY, CONSUMER_SECRET
 
 CALLBACK_URL = 'http://127.0.0.1:8000/callback'
 
