@@ -12,8 +12,8 @@ import tldextract
 
 from .models import Author, Tweets
 
-CONSUMER_KEY = '6Uff1eSm3Filj2q26cFVSehfM'
-CONSUMER_SECRET = '2khEE2qd6pMtdJen5obJgEuQzpb9hgFQM1qNaAAfjWcdjLljuu'
+from .config import CONSUMER_KEY, CONSUMER_SECRET
+
 CALLBACK_URL = 'http://127.0.0.1:8000/callback'
 
 #Landing page view
@@ -70,7 +70,7 @@ def homeView(request):
 
     tweets = []
     Tweets.objects.all().delete()
-    for status in tweepy.Cursor(api.home_timeline).items(100):
+    for status in tweepy.Cursor(api.home_timeline).items(10):
         urls = status.entities['urls']
         #finding link in a tweet and checking if it is not a retweet link
         if urls and urls[0]['display_url'][0:7] != 'twitter' and checkTweet(status):
