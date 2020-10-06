@@ -6,6 +6,13 @@ body {
 * {
     box-sizing: border-box;
 }
+
+@media only screen and (min-width: 600px) {
+    .main-box {
+        padding-left: 160px;
+    }
+}
+
   
 .box {
     float: left;

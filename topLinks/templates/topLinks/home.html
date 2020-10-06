@@ -3,7 +3,7 @@
 {% block navbar %}
 
     <nav class="mb-1 navbar navbar-fixed-top navbar-expand-lg navbar-dark default-color ">
-        <a class="navbar-brand" href="{% url 'topLinks:home' %}">Twitter Top Links</a>
+        <a class="navbar-brand" href="#">Twitter Top Links</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
             aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'topLinks:home' %}">Home
+                    <a class="nav-link" href="#">Home
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>
@@ -31,26 +31,23 @@
         </div>
     </nav>
 
-    {% comment %} <div class="container">
-        <div class="jumbotron">
-            <h4 class="text-center font-weight-bold">{{ request.session.username }}</h4>
-            <div class = "domain-box"> </div>
-            <div class = "author-box"> </div>
-        </div>
-    </div> {% endcomment %}
     
-    <div class="container clearfix text-center" style = "padding-left:160px;">
+    <div class="container clearfix text-center main-box">
         <div class="box" style="background-color:#bbb">
             <h2>Top Domain Sharer</h2>
-            {% for sharer in top_sharers %}
-                <p>{{ sharer.username__username }} shared {{ sharer.total }} domains</p>
-            {% endfor %} 
+            <div style="padding-top: 30px">
+                {% for sharer in top_sharers %}
+                    <p>{{ sharer.username__username }} shared {{ sharer.total }} domains</p>
+                {% endfor %} 
+            </div>
         </div>
         <div class="box" style="background-color:#ccc">
             <h2>Top Domain shared</h2>
-            {% for domain in top_domains %}
-                <p>{{ domain.domain }} is shared {{ domain.total }} times</p>
-            {% endfor %}
+            <div style="padding-top: 30px">
+                {% for domain in top_domains %}
+                    <p>{{ domain.domain }} is shared {{ domain.total }} times</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
 
@@ -59,7 +56,9 @@
 
 {% block content %}
 
-    <div class="text-center"> <h4 class="display-5" style="padding-bottom:10px;color:floralwhite;">{{ request.session.username }}'s tweets</h4></div>
+    <div class="text-center"> 
+        <h4 class="display-5" style="padding-top:10px;color:floralwhite;">{{ request.session.username }}'s tweets</h4>
+    </div>
 
     {% for tweet in tweets %}
         <div class="container" style ="text-align: -webkit-center; text-align: -moz-center;"> 

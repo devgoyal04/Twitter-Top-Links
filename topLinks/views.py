@@ -12,7 +12,7 @@ import tldextract
 
 from .models import Author, Tweets
 
-from .config import CONSUMER_KEY, CONSUMER_SECRET
+from config import CONSUMER_KEY, CONSUMER_SECRET
 
 CALLBACK_URL = 'http://127.0.0.1:8000/callback'
 
@@ -70,7 +70,7 @@ def homeView(request):
 
     tweets = []
     Tweets.objects.all().delete()
-    for status in tweepy.Cursor(api.home_timeline).items(10):
+    for status in tweepy.Cursor(api.home_timeline).items(150):
         urls = status.entities['urls']
         #finding link in a tweet and checking if it is not a retweet link
         if urls and urls[0]['display_url'][0:7] != 'twitter' and checkTweet(status):
@@ -88,8 +88,6 @@ def homeView(request):
 
     top_sharers = getTopSharer()
     top_domains = getTopDomain()
-    print(top_sharers)
-    print(top_domains)
 
     return render(request, 'topLinks/home.html', {
         'tweets': tweets,
